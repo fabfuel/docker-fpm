@@ -17,7 +17,8 @@
 </head>
 <body>
 	<h1><?php echo "Hello ".(isset($_ENV["NAME"])?$_ENV["NAME"]:"world")."!"; ?></h1>
-	<?php if(isset($_ENV["HOSTNAME"])) {?><h3>My hostname is <?php echo $_ENV["HOSTNAME"]; ?></h3><?php } ?>
+	<?php if (isset($_ENV["HOSTNAME_NGINX"])): ?><h3>nginx host: <?php echo $_ENV["HOSTNAME_NGINX"]; ?></h3><?php endif; ?>
+	<?php if (isset($_ENV["HOSTNAME_FPM"])): ?><h3>FPM host: <?php echo $_ENV["HOSTNAME_FPM"]; ?></h3><?php endif; ?>
 	<?php
 	$links = [];
 	foreach($_ENV as $key => $value) {
