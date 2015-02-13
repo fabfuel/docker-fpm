@@ -10,9 +10,8 @@ RUN pecl install -f apcu mongo redis memcached xdebug
 # checkout, compile and install Phalcon extension
 RUN cd ~; git clone https://github.com/phalcon/cphalcon -b master --single-branch; cd ~/cphalcon/build; ./install; rm -rf ~/cphalcon
 
-ADD www/ /var/www
-ADD config/php.ini /usr/local/etc/php/conf.d/custom.ini
-ADD config/php-fpm.conf /usr/local/etc/php-fpm.conf
+COPY var/www /var/www
+COPY etc /usr/local/etc
 
 WORKDIR /var/www
 EXPOSE 9000
